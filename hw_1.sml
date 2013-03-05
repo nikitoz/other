@@ -107,6 +107,68 @@ fun oldest ( dates : (int * int * int) list ) =
 		else
 			SOME ( min_date( tl dates, hd dates ) )
 	end
+	
+fun contains( xs : int list, n : int ) =
+	if ( null xs ) then
+		false
+	else if ( ( hd xs ) = n ) then
+		true
+	else
+		contains( tl xs, n )
+	
+
+fun remove_duplicates( m : int list ) =
+	let 
+		fun internal( m : int list, n : int list ) =
+			if ( null m ) then
+				n
+			else if ( contains ( n, hd m ) ) then
+				internal ( tl m, n )
+			else
+				internal ( tl m, n @ [hd m] )
+	in
+		internal( m, [] )
+	end
+			
+		
+fun number_in_months_challenge( dates : (int * int * int) list, ms : int list ) = 
+	number_in_months( dates, remove_duplicates( ms ) )
+	
+fun dates_in_months_challenge( dates : ( int * int * int ) list, ms : int list ) = 
+	dates_in_months( dates, remove_duplicates( ms ) )
+	
+fun is_leap( y : int ) =
+	if ( ( ( y mod 400 ) = 0 ) orelse ( ( y mod 4 = 0 ) andalso not( ( y mod 100 ) = 0 ) ) ) then
+		true
+	else
+		false
+	
+	
+fun reasonable_date( date : ( int * int * int ) ) =
+	if ( ( ( #1 date ) > 0 ) andalso ( ( #2 date) > 0 ) andalso ( ( #2 date) < 13 ) andalso ( ( #3 date) > 0 ) ) then
+		if ( ( ( #2 date ) = 2 ) andalso ( ( #3 date ) = 29 ) ) then
+			if ( is_leap( #1 date ) ) then
+				true
+			else 
+				false
+		else if ( ( #2 date ) = 2 ) then
+			if ( ( #3 date ) < 29 ) then 
+				true
+			else
+				false
+		else if ( ( ( #2 date ) = 4 ) orelse ( ( #2 date ) = 6 ) orelse ( ( #2 date ) = 9 ) orelse ( ( #2 date ) = 11 ) ) then
+			if ( ( #3 date ) < 31 ) then
+				true
+			else
+				false
+		else if ( ( #3 date ) < 32 ) then 
+			true
+		else 
+			false
+	else 
+		false
+	
+	
 			
 			
 			
