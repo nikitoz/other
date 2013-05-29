@@ -1,0 +1,84 @@
+<UserSettings>
+	<ApplicationIdentity version="8.0"/>
+	<ToolsOptions>
+		<ToolsOptionsCategory name="Environment" RegisteredName="Environment"/>
+	</ToolsOptions>
+	<Category name="Environment_Group" RegisteredName="Environment_Group">
+		<Category name="Environment_KeyBindings" Category="{F09035F1-80D2-4312-8EC4-4D354A4BCB4C}" Package="{DA9FB551-C724-11d0-AE1F-00A0C90FFFC3}" RegisteredName="Environment_KeyBindings" PackageName="Visual Studio Environment Package">
+			<Version>8.0.0.0</Version>
+			<KeyboardShortcuts>
+				<ScopeDefinitions>
+					<Scope Name="Class Diagram" ID="{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}"/>
+					<Scope Name="Crystal Report Editor" ID="{F5425B29-1FDC-4059-B50B-1154F30A0AF8}"/>
+					<Scope Name="Managed Resources Editor" ID="{FEA4DCC9-3645-44CD-92E7-84B55A16465C}"/>
+					<Scope Name="XML Editor Data View" ID="{F482F8AF-1E66-4760-919E-964707265994}"/>
+					<Scope Name="VC Accelerator Editor" ID="{EB56D0B5-BEE7-4D0C-8BE6-88A8ED256695}"/>
+					<Scope Name="WebBrowser" ID="{E8B06F41-6D01-11D2-AA7D-00C04F990343}"/>
+					<Scope Name="XML Editor Schema View" ID="{E6631B5B-2EAB-41E8-82FD-6469645C76C9}"/>
+					<Scope Name="Database Designer" ID="{CFF78A9B-78A3-45A3-9142-0267AFC261FA}"/>
+					<Scope Name="HTML Editor Source View" ID="{CB3FCFEB-03DF-11D1-81D2-00A0C91BBEE3}"/>
+					<Scope Name="HTML Editor Design View" ID="{CB3FCFEA-03DF-11D1-81D2-00A0C91BBEE3}"/>
+					<Scope Name="Report Designer" ID="{CB3675B8-701E-4F56-9167-2714E167FF3F}"/>
+					<Scope Name="VC Image Editor" ID="{C0BA70ED-069E-412B-9C06-7442E28A11B9}"/>
+					<Scope Name="Windows Forms Designer" ID="{BA09E2AF-9DF2-4068-B2F0-4C7E5CC19E2F}"/>
+					<Scope Name="View Designer" ID="{B968E165-98E0-41F0-8FBE-A8ED1D246A90}"/>
+					<Scope Name="DataSet Editor" ID="{B334A759-F450-40A5-BE2A-65937BCD5415}"/>
+					<Scope Name="Query Designer" ID="{B2C40B32-3A37-4CA9-97B9-FA44248B69FF}"/>
+					<Scope Name="CSS Source Editor" ID="{A764E89A-518D-11D2-9A89-00C04F79EFC3}"/>
+					<Scope Name="Text Editor" ID="{8B382828-6202-11D1-8870-0000F87579D2}"/>
+					<Scope Name="Global" ID="{5EFC7975-14BC-11CF-9B2B-00AA00573819}"/>
+					<Scope Name="VC String Editor" ID="{58442DA9-10DA-4AA9-A2AF-96E4D481379B}"/>
+					<Scope Name="VC Dialog Editor" ID="{543E0C02-8C85-4E43-933A-5EF320E3431F}"/>
+					<Scope Name="Settings Designer" ID="{515231AD-C9DC-4AA3-808F-E1B65E72081C}"/>
+					<Scope Name="HTML Editor Code View" ID="{4C01CBEE-FB8C-4ED0-8EC0-68348C52822E}"/>
+					<Scope Name="Table Designer" ID="{4194FEE5-6777-419F-A5FC-47A536DF1BDB}"/>
+					<Scope Name="Application Verifier" ID="{28D4A6C1-6FBF-42A9-8CC7-A705F524AEC8}"/>
+				</ScopeDefinitions>
+				<DefaultShortcuts/>
+				<ShortcutsScheme>Visual C++ 6</ShortcutsScheme>
+				<UserShortcuts>
+					<RemoveShortcut Command="Edit.Find" Scope="Global">Ctrl+F</RemoveShortcut>
+					<Shortcut Command="Edit.CharRight" Scope="Global">Ctrl+F</Shortcut>
+					<RemoveShortcut Command="Debug.BreakatFunction" Scope="Global">Ctrl+B</RemoveShortcut>
+					<Shortcut Command="Edit.CharLeft" Scope="Global">Ctrl+B</Shortcut>
+					<RemoveShortcut Command="Build.BuildSolution" Scope="Global">Ctrl+Shift+B</RemoveShortcut>
+					<Shortcut Command="Edit.CharLeftExtend" Scope="Global">Ctrl+Shift+B</Shortcut>
+					<RemoveShortcut Command="Edit.FindinFiles" Scope="Global">Ctrl+Shift+F</RemoveShortcut>
+					<Shortcut Command="Edit.CharRightExtend" Scope="Global">Ctrl+Shift+F</Shortcut>
+					<RemoveShortcut Command="File.NewFile" Scope="Global">Ctrl+N</RemoveShortcut>
+					<Shortcut Command="Edit.LineDown" Scope="Global">Ctrl+N</Shortcut>
+					<RemoveShortcut Command="File.NewProject" Scope="Global">Ctrl+Shift+N</RemoveShortcut>
+					<Shortcut Command="Edit.LineDownExtend" Scope="Global">Ctrl+Shift+N</Shortcut>
+					<RemoveShortcut Command="View.ResourceView" Scope="Global">Ctrl+Shift+E</RemoveShortcut>
+					<Shortcut Command="Edit.LineEndExtend" Scope="Global">Ctrl+Shift+E</Shortcut>
+					<RemoveShortcut Command="Edit.SelectAll" Scope="Global">Ctrl+A</RemoveShortcut>
+					<Shortcut Command="Edit.LineStart" Scope="Global">Ctrl+A</Shortcut>
+					<RemoveShortcut Command="Project.AddNewItem" Scope="Global">Ctrl+Shift+A</RemoveShortcut>
+					<Shortcut Command="Edit.LineStartExtend" Scope="Global">Ctrl+Shift+A</Shortcut>
+					<RemoveShortcut Command="File.Print" Scope="Global">Ctrl+P</RemoveShortcut>
+					<Shortcut Command="Edit.LineUp" Scope="Global">Ctrl+P</Shortcut>
+					<RemoveShortcut Command="Tools.RunTemporaryMacro" Scope="Global">Ctrl+Shift+P</RemoveShortcut>
+					<Shortcut Command="Edit.LineUpExtend" Scope="Global">Ctrl+Shift+P</Shortcut>
+					<Shortcut Command="Edit.WordNext" Scope="Global">Alt+F</Shortcut>
+					<Shortcut Command="Edit.WordPrevious" Scope="Global">Alt+B</Shortcut>
+					<Shortcut Command="Edit.WordPreviousExtend" Scope="Global">Shift+Alt+B</Shortcut>
+					<Shortcut Command="VisualAssistX.FindReferences" Scope="Global">Ctrl+Alt+F</Shortcut>
+					<RemoveShortcut Command="Edit.WordNextExtend" Scope="Global">Shift+Alt+F</RemoveShortcut>
+					<Shortcut Command="Edit.WordNextExtend" Scope="Global">Shift+Alt+F</Shortcut>
+					<RemoveShortcut Command="VisualAssistX.FindReferences" Scope="Text Editor">Shift+Alt+F</RemoveShortcut>
+					<RemoveShortcut Command="Edit.LineEnd" Scope="Global">Ctrl+E</RemoveShortcut>
+					<Shortcut Command="Edit.LineEnd" Scope="Global">Ctrl+E</Shortcut>
+					<RemoveShortcut Command="Edit.ToggleWordWrap" Scope="Text Editor">Ctrl+E, Ctrl+W</RemoveShortcut>
+					<RemoveShortcut Command="Build.BuildSolution" Scope="Global">F7</RemoveShortcut>
+					<Shortcut Command="Tools.ExternalCommand9" Scope="Global">F7</Shortcut>
+					<Shortcut Command="Edit.Find" Scope="Global">Alt+S</Shortcut>
+					<RemoveShortcut Command="Edit.GoToFindCombo" Scope="Global">Ctrl+D</RemoveShortcut>
+					<Shortcut Command="Edit.Delete" Scope="Global">Ctrl+D</Shortcut>
+					<Shortcut Command="File.Close" Scope="Global">Alt+C</Shortcut>
+					<RemoveShortcut Command="Edit.Cut" Scope="Global">Ctrl+X</RemoveShortcut>
+					<Shortcut Command="File.SaveSelectedItems" Scope="Global">Ctrl+X, Ctrl+S</Shortcut>
+				</UserShortcuts>
+			</KeyboardShortcuts>
+		</Category>
+	</Category>
+</UserSettings>
