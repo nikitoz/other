@@ -178,55 +178,49 @@ void bst_hibbard(node** root, int key) {
 	node* prev = 0;
 	node* r = *root;
 	while (r) {
-		if (r->d == key)     return r;
+		if (r->d == key)     break;
 		prev = r;
-		if (r->d > key)      r = r->right;
-		else if (r->d < key) r = r->left;
+		if (r->d < key)      r = r->right;
+		else if (r->d > key) r = r->left;
 	}
 	if (r->left == 0 && r->left == 0) {
-		if (prev && prev->left == r) {
-			delete r;
+		if (prev && prev->left == r)
 			prev->left = 0;
-		} else if (prev && prev->right) {
-			delete r;
+		else if (prev && prev->right)
 			prev->right = 0;
-		} else
-			delete r;
 	} else if (r->left == 0) {
-		if (prev && prev->left == r) {
+		if (prev && prev->left == r)
 			prev->left = r->right;
-			delete r;
-		} else if (prev && prev->right) {
+		else if (prev && prev->right)
 			prev->right = r->right;
-			delete r;
-		} else {
+		else
 			root = &r->right;
-			delete r;
-		}
 	} else if (r->right == 0) {
-		if (prev && prev->left == r) {
+		if (prev && prev->left == r)
 			prev->left = r->left;
-			delete r;
-		} else if (prev && prev->right) {
+		else if (prev && prev->right)
 			prev->right = r->left;
-			delete r;
-		} else {
+		else
 			root = &r->left;
-			delete r;
-		}
 	} else {
 		node** sub = bst_floor(&(r->right));
 		if (prev && prev->left == r) {
 			prev->left = *sub;
-			sub->left  = r->left;
-			sub->right = r->right;
-			
-			delete r;
-		} else if (prev && prev->right) {
-			prev->right = r->left;
-			delete r;
+			sub  = (*sub)->right;
+			prev->left->left  = r->left;
+			prev->left->right = r->right;
+		} else if (prev && prev->right == r) {
+			prev->right = *sub;
+			prev->right->left  = r->left;
+			prev->right->right = r->right;
+		} else {
+			(*sub)->left  = r->left;
+			(*sub)->right = r->right;
+			*root = *sub;
+			sub = (*sub)->right;
 		}
 	}
+	delete r;
 }
 
 int main() {
@@ -241,6 +235,8 @@ int main() {
 // 	bst_inorder(r);     printf("\n");
 	bst_preorder_r(r);  printf("\n");
 	bst_preorder(r);    printf("\n");
+	bst_hibbard(&r, 11);
+	bst_inorder(r);    printf("\n");
 // 	bst_postorder_r(r); printf("\n");
 // 	bst_postorder(r);
 // 	if (bst_is_bst(r))
