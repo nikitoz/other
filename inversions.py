@@ -10,11 +10,6 @@ def input_ff(filename):
 
 	return retval
 
-def swap(a, i, j):
-	t = a[i]
-	a[i] = a[j]
-	a[j] = t
-
 def count_inversions_split(a, begin, end):
 	retval = 0
 	r = []
