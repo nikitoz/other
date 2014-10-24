@@ -108,10 +108,55 @@ fun check_pat p =
 	in foo (!lst) end
 
 fun match (v, p) =
-	let fun helper (v, p) =
-		case v of
-			Const i => case p of ConstP j => (if i=j then [] else NONE) | _ => NONE
-	      | Unit    => case p of UnitP => [] |  _ => NONE
-	      | Constructor (s1,v1) => case p of ConstructorP (s2, p2) => if (s1=s2) then (case helper(v1, p2) of SOME lst => SOME lst @ [(v1, p2)]) else NONE 
-										  |  NONE =>  NONE
-	      | Tuple of valu list
+	case (p,v) of
+		(Wildcard,_)         => SOME []
+	 | (Variable s, _)       => SOME [(s, v)]
+	 | (UnitP, Unit)         => SOME []
+	 | (ConstP c1, Const c2) => if (c1=c2) then SOME [] else NONE
+	 | (TupleP ps, Tuple vs) => (
+		if (List.length ps = List.length vs) then
+			(all_answers match (ListPair.zip (vs, ps)))
+		else NONE)
+	 | (ConstructorP(s1, p2), Constructor(s2, v2)) => if (s1=s2) then match(v2, p2) else NONE
+	 | (_,_) => NONE
+
+
+fun first_match v = fn ps =>
+	(SOME (first_answer (fn p => match(v, p)) ps)) handle NoAnswer => NONE
+
+
+(*
+fun match_type (t, p) =
+	case (t, p) of
+		(Anything, _)    => SOME Anything
+	  | (UnitT, UnitP)   => SOME UnitT
+	  | (IntT, ConstP i) => SOME IntT
+      | (TupleT ts, TupleP ps) =>
+		(if (List.length ps = List.length ts) then
+			let val ls = (all_answers match_type (ListPair.zip (ts, ps))) in NONE end				
+(*
+			let val ls = (List.map match_type  (ListPair.zip (ts, ps))) in
+				if (List.exists 
+					(fn a => case a of NONE => true 
+							 | _ => false ) 
+					ls ) then NONE 
+				else SOME(TupleT(ls))
+			end
+*)
+		else NONE)
+      |  (_,_) => NONE*)
+
+fun match_type2 (t, p) =
+	case (t,p) of
+		(TupleT ts, TupleP ps) => 
+			let val vs = (all_answers match_type2 (ListPair.zip (ts, ps))) in vs end
+			   | (Anything,_) => SOME [Anything]
+			   | (_,_)        =>  NONE
+
+(*
+fun typecheck_patterns ( ts,  ps : pattern list) =
+	(SOME (first_answer (fn t => all_answers(match_type, ps) ) 
+				ts
+	)) handle NoAnswer => NONE  
+
+*)
