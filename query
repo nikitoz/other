@@ -1,0 +1,1 @@
+db.graph.find({"data.words" : 'huita'}, {"data.occurrences.$":1})

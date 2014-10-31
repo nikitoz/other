@@ -38,14 +38,14 @@ def solveIt(inputData):
     items = int(firstLine[0])
     capacity = int(firstLine[1])
 
-    values = []
+    values  = []
     weights = []
 
     for i in range(1, items+1):
-        line = lines[i]
+        line  = lines[i]
         parts = line.split()
 
-        values.append(int(parts[0]))
+        values.append (int(parts[0]))
         weights.append(int(parts[1]))
 
     items = len(values)
@@ -55,9 +55,9 @@ def solveIt(inputData):
 
     # a trivial greedy algorithm for filling the knapsack
     # it takes items in-order until the knapsack is full
-    value = 0
+    value  = 0
     weight = 0
-    taken = []
+    taken  = []
     for i in range(0, items):
         taken.append(0)
 
