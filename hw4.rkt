@@ -73,41 +73,18 @@
   (vector-assoc-internal v vec 0))
 
 (define (cached-assoc xs n)
-  (letrec ([vec (build-vector n (lambda(x)(#f)))]
-           [pos 0]
-           [f (lambda (v)
-                (let ([r (vector-assoc v vec)]) (if (equal? #f r) (let ([res (assoc v xs)]) 
-                                                                    [begin (if (= pos n) (set! pos 0) null) (vector-set! vec pos v)] )
-                )))]))
-    ))
-
-;(vector-ref (vector 1 2 3 4) 2)
-;((cdr (cycle-lists (list 1 2 3) (list 3 2 1))))
-;(place-repeatedly (open-window) 3 (stream-add-zero dan-then-dog) 10)
-
-;((cdr((cdr ((stream-add-zero dan-then-dog))))))
-
-;(stream-for-n-steps funny-number-stream 10)
-;(stream-for-n-steps dan-then-dog 10)
-;(dan-the-dog)
-;(define (funny-number-stream)
-;  (define (funny-number-stream-arg n)
-;  (lambda ()
-;    [cons
-;      (if [= 0 (remainder n 5)]
-;        (* -1 n)
-;        n)
-;      (funny-number-stream-arg (+ 1 n))]))
-;  ((funny-number-stream-arg 1)))
-
-;(stream-for-n-steps funny-number-stream2 10)
-;((cdr (funny-number-stream2)))
-;(car (funny-number-stream2))
-;(sequence 3 11 2)
-;(sequence 3 8 3)
-;(sequence 3 2 1)
-
-;(string-append-map (list "1" "2") "a")
-
-;(list-nth-mod (list 2 3 4) 1)
-;(stream-for-n-steps (list 1 3 4 5) 2)
+  (letrec (
+    [vec (make-vector n #f)]
+    [pos 0]
+    [f (lambda (v)
+      (let ([r (vector-assoc v vec)])
+        (if (equal? #f r) 
+          (let ([res (assoc v xs)])
+            [
+              begin 
+              (vector-set! vec (remainder pos n) res)
+              (set! pos (+ 1 pos))
+              res
+            ])
+            r)))])
+     f))
