@@ -57,7 +57,7 @@ class g():
 
 def dowork():
 	num = 200
-	v = g('D:/Projects/other/kargerMinCut.txt', num)
+	v = g('kargerMinCut.txt', num)
 	while (v.num_vertices() > 2):
 		r = random.randint(0, v.num_vertices()-1)
 		#print 'random = ', r
@@ -68,7 +68,7 @@ def dowork():
 
 results = []
 	#random.seed()
-for h in range(0, 1000):
+for h in range(0, 212000):
 	results.append(dowork())
 #	print min(results)
 #	results = []
