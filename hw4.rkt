@@ -3,10 +3,6 @@
 
 (provide (all-defined-out)) ;; so we can put tests in a second file
 
-
-;(print "hello world")
-;; put your code below
-
 (define (sequence low high stride)
   (if (> low high)
       null
@@ -14,8 +10,6 @@
 
 (define (string-append-map xs suffix)
   (map (lambda(x) (string-append (if (symbol? x) (symbol->string x) x) (if (symbol? suffix) (symbol->string suffix) suffix))) xs))
-
-;(string-append-map (quote (hear wel ac)) "t")
 
 (define (list-nth-mod xs n)
   (if (< n 0)
