@@ -19,7 +19,7 @@ class MyPiece < Piece
 		[[[-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0]], [[0, 2], [0, 1], [0, 0], [0, -1], [0, -2]]]
 	]
 
-	Cheat_Piece = [[[0, 0]]]
+	Cheat_Piece = [[0, 0]]
     # your enhancements here
 	def self.next_piece (board, cheat=false)
 		if cheat
