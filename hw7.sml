@@ -173,6 +173,25 @@ fun intersect (v1,v2) =
 	  | _ => raise Impossible "bad result from intersecting with a line")
       | _ => raise Impossible "bad call to intersect: only for shape values"
 
+fun get_min(a : real, b : real) =	if (a < b) then a else b
+fun get_max(a : real, b : real) = if (a > b) then a else b
+
+fun preprocess_prog(g) =
+	case g of
+		LineSegment(bXstart,bYstart,aXend,aYend) =>
+			if (real_close(bXstart, aXend) andalso real_close(bYstart, aYend)) then
+				Point(bXstart, aYend)
+			else if (real_close(bXstart, aXend)) then
+				if (bYstart < aYend) then LineSegment(bXstart, bYstart, aXend, aYend)
+				else LineSegment(aXend, aYend, bXstart, bYstart)
+			else
+				if (bXstart < aXend) then
+					LineSegment(bXstart, bYstart, aXend, aYend)
+				else LineSegment(aXend, aYend, bXstart, bYstart)
+		| Shift(dx,dy, e) => Shift(dx, dy, preprocess_prog(e))
+		| Intersect(e1, e2) => Intersect(preprocess_prog(e1),preprocess_prog(e2))
+		| Let(s, e1, e2) => Let(s, preprocess_prog(e1), preprocess_prog(e2))
+		| _ => g
 (* interpreter for our language: 
    * takes a geometry expression and returns a geometry value
    * for simplicity we have the top-level function take an environment,
@@ -197,27 +216,13 @@ fun eval_prog (e,env) =
       | Let(s,e1,e2) => eval_prog (e2, ((s, eval_prog(e1,env)) :: env))
       | Intersect(e1,e2) => intersect(eval_prog(e1,env), eval_prog(e2, env))
       | Shift(dx, dy, e) =>
-			let e_evaled = eval_prog(preprocess_prog(e)) in
+			let val e_evaled = eval_prog(preprocess_prog(e), env) in
 				case e_evaled of
 					NoPoints => e_evaled
 				 |  Point(x,y) => Point(x+dx, y+dy)
 				 |  Line(m, b) => Line(m, b + dy - m*dx)
 				 |  VerticalLine(x) => VerticalLine(dx+x)
-				 |  LineSegment(sx, sy, ex, ey) => LineSegment(sx, sy, ex+dx, ey+dy)
+				 |  LineSegment(sx, sy, ex, ey) => LineSegment(sx+dx, sy+dy, ex+dx, ey+dy)
 			end	
 (* CHANGE: Add a case for Shift expressions *)
 
-fun get_min(a, b) =	if (a < b) then a else b
-fun get_max(a, b) = if (a > b) then a else b
-
-(* CHANGE: Add function preprocess_prog of type geom_exp -> geom_exp *)
-fun preprocess_prog(g) =
-	case g of
-		LineSegment(bXstart,bYstart,aXend,aYend) =>
-			if (real_close(bXstart, aXend) andalso real_close(bYstart, aYend)) then
-				Point(bXstart, aYend)
-			else if (real_close(bXstart, aXend)) then
-				LineSegment(bXstart, get_min(bYstart, aYend), aXend, get_max(bYstart, aYend))
-			else
-				LineSegment(get_min(bXstart, aXend), bYstart, get_max(LineSegment),aYend)
-	 	| _ => g
