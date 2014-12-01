@@ -349,7 +349,7 @@ class Let < GeometryExpression
   end
 
 	def eval_prog env # remember: do not change this method
-		eval_prog(e2, 
+		e2.eval_prog( env.push(
 	end
 end
 
